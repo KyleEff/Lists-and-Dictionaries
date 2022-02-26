@@ -14,47 +14,46 @@ class Program {
     // Constructor
     public Program() {
 
-        //problemOne();
+        problemOne();
         problemTwo();
     }
 
     // Methods
     /*
-     * Write a program and continuously ask the user to enter different names,
+     * 1) Write a program and continuously ask the user to enter different names,
      *      until the user presses Enter (without supplying a name).
      *      Depending on the number of names provided,
      *      display a message based on the above pattern. 
      */
     void problemOne() {
 
-        var names = new ArrayList();
+        var names = new ArrayList();// ArrayList to hold this names entered
 
-        Console.WriteLine("ONE\nEnter names:");
-        string name = Console.ReadLine();
+        Console.WriteLine("ONE\nEnter names:"); // Title
+        string name = Console.ReadLine(); // Receive input from the user
 
-        while (name != "") {
+        while (name != "") { // While the name variable is not a blank string
 
-            names.Add(name);
-            name = Console.ReadLine();
+            names.Add(name); // Add the name to the list
+            name = Console.ReadLine(); // Wait for the next anme
         }
 
-        //foreach (var i in names) Console.WriteLine(i);
+        //foreach (var i in names) Console.WriteLine(i); // Debug statement; prints the list of names
 
+        switch (names.Count) { // Switch using the length of the list
 
-        switch (names.Count) {
-
-            case 0:
+            case 0: // No likes; Display nothing
                 break;
 
-            case 1:
+            case 1: // 1 like;
                 Console.WriteLine(names[0] + " likes your post.");
                 break;
 
-            case 2:
+            case 2: // 2 likes
                 Console.WriteLine(names[0] + " and " + names[1] + " like your post.");
                 break;
 
-            default:
+            default: // more than 2 likes
                 Console.WriteLine(
 
                     names[0] + ", " + names[1] + ", and " +
@@ -65,38 +64,36 @@ class Program {
     }
 
     /*
-     * Write a program that asks the user to enter a sentence.
+     * 2) Write a program that asks the user to enter a sentence.
      *      Display each unique letter in the sentence,
      *      and how many times each one appeared. 
      */
     void problemTwo() {
 
-        Console.WriteLine("TWO\nEnter a sentence:");
-        string sentence = Console.ReadLine().ToLower();
-        var tokens = sentence.ToCharArray();
-        Dictionary<char, int> letters = new Dictionary<char, int>();
+        Console.WriteLine("\nTWO\nEnter a sentence:"); // Heading
+        string sentence = Console.ReadLine().ToLower(); // The input from the user
+        var tokens = sentence.ToCharArray(); // Splitting the string into a character array
+        Dictionary<char, int> letters = new Dictionary<char, int>(); // Create a dictionary data structure
 
-        
 
-        foreach (var i in tokens) {
+        foreach (var i in tokens) { // for each variable in tokens
 
-            if (i == ' ') continue;
+            if (i == ' ') continue; // if the token is a space, skip
 
-            else {
+            else { // if the token is not a space
 
-                if (!letters.ContainsKey(i))
-                    letters.Add(i, 1);
+                if (!letters.ContainsKey(i)) // if the dictionary contains the token
+                    letters.Add(i, 1); // then add the token as a key with a 1 value
 
-                else
-                    letters[i]++;
-
+                else // if the dictionary contains the token
+                    letters[i]++; // increment the value
             }
         }
 
         foreach (var i in letters)
-            Console.WriteLine(i);
+            Console.WriteLine(i); // Print Dictionary
     }
 
-    public static void Main(string[] args) { new Program(); }
+    public static void Main(string[] args) { new Program(); } // Driver Function
 }
 
